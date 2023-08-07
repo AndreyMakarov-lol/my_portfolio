@@ -9,6 +9,7 @@ class Posts(models.Model):
     description = models.TextField('Текст записи')
     author = models.CharField('Имя автора', max_length=100)
     date = models.DateField('Дата публикации')
+    img = models.ImageField('Изображение', upload_to='image/%Y')
 
     class Meta:
         verbose_name = 'Запись'
@@ -17,3 +18,5 @@ class Posts(models.Model):
     # Вывод списка записей в админ панели
     def __str__(self):
         return f"{self.title}, {self.author}"
+
+

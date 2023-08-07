@@ -11,3 +11,9 @@ class PostView(View):
     def get(self, request):
         posts = Posts.objects.all()
         return render(request, 'blog/blog.html', {"post_list": posts})
+
+class PostDetail(View):
+    '''Отдельная страница для каждой записи'''
+    def get(self, request, pk):
+        post = Posts.objects.get(id=pk)
+        return render(request, 'blog/blog_detail.html', {"post": post})
