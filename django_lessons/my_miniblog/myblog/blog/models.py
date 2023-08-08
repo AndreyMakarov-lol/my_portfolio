@@ -15,8 +15,26 @@ class Posts(models.Model):
         verbose_name = 'Запись'
         verbose_name_plural = 'Записи'
 
-    # Вывод списка записей в админ панели
+# Вывод списка записей в админ панели
     def __str__(self):
         return f"{self.title}, {self.author}"
+
+class Comments(models.Model):
+    '''Коментрии'''
+    email = models.EmailField()
+    name = models.CharField('Имя', max_length=50)
+    text_comments = models.TextField('Текст комментария', max_length=2000)
+    post = models.ForeignKey(Posts, verbose_name='Публикация', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+
+    # Вывод списка записей в админ панели
+    def __str__(self):
+        return f"{self.name}, {self.post}"
+
+
+
 
 

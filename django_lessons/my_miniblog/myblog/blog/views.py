@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.base import View
 
 # Представление вывода записей
@@ -17,3 +17,9 @@ class PostDetail(View):
     def get(self, request, pk):
         post = Posts.objects.get(id=pk)
         return render(request, 'blog/blog_detail.html', {"post": post})
+
+class AddComents(View):
+    """Добавление комментария"""
+    def post(self, request, pk):
+        print(request.POST)
+        return redirect("/")

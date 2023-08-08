@@ -36,6 +36,30 @@
 
 				</div>
 			</div>
+			<div class="form_comment">
+				<h3>Оставить комментарий</h3>
+				<div>
+					<form action="{% url 'add_comments' post.id %}" method="post">
+						{% csrf_token %}
+						<div>
+							<label>Ваш комментарий</label>
+							<textarea name="text_comments"></textarea>
+						</div>
+						<div>
+							<label>Введите имя*</label>
+							<input type="text" name="name">
+						</div>
+						<div>
+							<label>Введите email*</label>
+							<input type="email" name="email">
+						</div>
+						<div><input type="submit"></div>
+					</form>
+
+
+				</div>
+
+			</div>
 
 			<div class="cl">&nbsp;</div>
 		</div>
